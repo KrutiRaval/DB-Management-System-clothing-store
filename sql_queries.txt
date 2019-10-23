@@ -1,0 +1,128 @@
+CREATE TABLE  "CUSTOMER" 
+   (	"CID" VARCHAR2(20), 
+	"CNAME" VARCHAR2(20), 
+	"ADDRESS" VARCHAR2(20), 
+	"CONTACT_NO" NUMBER, 
+	 CONSTRAINT "CUSTOMER_PK" PRIMARY KEY ("CID") ENABLE
+   )
+/
+
+CREATE OR REPLACE TRIGGER  "BI_CUSTOMER" 
+  before insert on "CUSTOMER"               
+  for each row  
+begin   
+    select "CUSTOMER_SEQ".nextval into :NEW.CID from dual; 
+end; 
+
+/
+ALTER TRIGGER  "BI_CUSTOMER" ENABLE
+/
+
+                                     *************************************************************************
+
+CREATE TABLE  "ITEM" 
+   (	"ITEM_ID" VARCHAR2(5), 
+	"COLOR" VARCHAR2(10), 
+	"PRICE" NUMBER(6,2), 
+	 CONSTRAINT "ITEM_PK" PRIMARY KEY ("ITEM_ID") ENABLE
+   )
+/
+
+CREATE OR REPLACE TRIGGER  "BI_ITEM" 
+  before insert on "ITEM"               
+  for each row  
+begin   
+    select "ITEM_SEQ".nextval into :NEW.ITEM_ID from dual; 
+end; 
+
+/
+ALTER TRIGGER  "BI_ITEM" ENABLE
+/
+                                   
+
+
+
+                                     ********************************************************************************
+
+
+
+
+CREATE TABLE  "EMPLOYEE" 
+   (	"E_ID" VARCHAR2(10), 
+	"ENAME" VARCHAR2(10), 
+	"CONTACT_NO" NUMBER, 
+	"ADDRESS" VARCHAR2(20), 
+	 CONSTRAINT "EMPLOYEE_PK" PRIMARY KEY ("E_ID") ENABLE
+   )
+/
+
+CREATE OR REPLACE TRIGGER  "BI_EMPLOYEE" 
+  before insert on "EMPLOYEE"               
+  for each row  
+begin   
+    select "EMPLOYEE_SEQ".nextval into :NEW.E_ID from dual; 
+end; 
+
+/
+ALTER TRIGGER  "BI_EMPLOYEE" ENABLE
+/
+
+
+
+
+
+
+                                *****************************************************************************************
+								
+								
+								
+						
+								
+CREATE TABLE  "ORDERS" 
+   (	"O_ID" VARCHAR2(5), 
+	"O_DATE" DATE, 
+	"O_AMT" NUMBER(6,2)
+   )
+/
+
+                                    ************************************************************************************
+
+									
+CREATE TABLE  "STORE" 
+   (	"ST_ID" VARCHAR2(5), 
+	"NAME" VARCHAR2(15), 
+	"HOURS" NUMBER, 
+	"ADDRESS" VARCHAR2(20)
+   )
+/
+
+
+
+                                  ****************************************************************************************
+								  
+								  
+								  
+CREATE TABLE  "SUPPLIERS" 
+   (	"SID" VARCHAR2(5), 
+	"NAME" VARCHAR2(10), 
+	"ADDRESS" VARCHAR2(20), 
+	"CONTACT_NO" NUMBER, 
+	 CONSTRAINT "SUPPLIERS_PK" PRIMARY KEY ("SID") ENABLE
+   )
+/
+
+CREATE OR REPLACE TRIGGER  "BI_SUPPLIERS" 
+  before insert on "SUPPLIERS"               
+  for each row  
+begin   
+    select "SUPPLIERS_SEQ".nextval into :NEW.SID from dual; 
+end; 
+
+/
+ALTER TRIGGER  "BI_SUPPLIERS" ENABLE
+/
+
+
+                                    ******************************************************************************************
+
+									
